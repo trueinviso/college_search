@@ -6,12 +6,16 @@ module CollegeScorecard
       end
 
       def call
-        client.get("schools", params)
+        Translators::ByName.new(data).call
       end
 
       private
 
       attr_reader :name
+
+      def data
+        JSON.parse(client.get("schools", params).body)
+      end
 
       def client
         @client ||= ::CollegeScorecard::Client.new
@@ -20,7 +24,7 @@ module CollegeScorecard
       def params
         {
           "school.name" => name,
-          # "fields" => "id,school.name,school.city,school.state,school.zip,school.ownership,school.school_url,school.price_calculator_url,school.degrees_awarded.predominant,2018.student.size,2018.admissions.admission_rate.overall,2018.cost.avg_net_price.private,2018.cost.avg_net_price.public,2018.aid.federal_loan_rate,2018.aid.median_debt.completers.overall,2018.aid.pell_grant_rate,2018.student"
+          "fields" => "id,school.name,school.city,school.state,location.lat,location.lon",
           "per_page" => 1,
         }
       end
