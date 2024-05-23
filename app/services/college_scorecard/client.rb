@@ -15,7 +15,7 @@ module CollegeScorecard
     end
 
     def api_key
-      { api_key: ENV["COLLEGE_API_KEY"] }
+      { api_key: Rails.application.credentials.college_scorecard[:api_key] }
     end
   end
 end

@@ -1,0 +1,12 @@
+<%= turbo_stream.replace "map-container" do %>
+  <% if @data.blank? %>
+    <div class="w-[400px] h-[400px]" id="map-container">
+      <div id=class="text-[20px]">No results found</div>
+    </div>
+  <% else %>
+    <div class="w-[400px] h-[400px]" id="map-container" data-controller="map" data-map-latitude="<%= @data[:lat] %>" data-map-longitude="<%= @data[:lng] %>">
+      <div id="map" data-map-target="map" style="height: 500px; width: 100%;"></div>
+    </div>
+  <% end %>
+
+<% end %>

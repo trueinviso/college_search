@@ -60,6 +60,7 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "byebug"
 end
 
 group :test do
@@ -69,3 +70,5 @@ group :test do
 end
 
 gem "faraday", "~> 2.9"
+
+gem "tailwindcss-rails", "~> 2.6"
