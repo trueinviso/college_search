@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   initializeMap() {
-    console.log('initialize map')
     const lat = parseFloat(this.element.dataset.mapLatitude)
     const lng = parseFloat(this.element.dataset.mapLongitude)
 
